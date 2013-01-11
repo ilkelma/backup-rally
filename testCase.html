@@ -1,0 +1,14 @@
+<html>
+<head>
+	<title>{{ tc_name }}</title>
+</head>
+<body>
+	<h1>{{ tc_name }}</h1>
+	<table>
+		<tr>{{ testCase.PreConditions }}</tr>
+	    {% for testStep in steps %}
+	        <tr><td>{{ testStep.StepIndex }}</td><td>{{ testStep.Input }}</td><td>{{ testStep.ExpectedResult }}</td></tr>
+	    {% endfor %}
+    </table>
+</body>
+</html>

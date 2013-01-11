@@ -6,7 +6,7 @@ args    = [arg for arg in sys.argv[1:] if arg not in options]
 server, user, password, workspace, project = rallySettings(options)
 rally = Rally(server, user, password, workspace=workspace, project=project)
 rally.enableLogging('mypyral.log')
-env = Environment(loader = FileSystemLoader('/'))
+env = Environment(loader = FileSystemLoader('.'))
 template = env.get_template('testCase.html')
 
 for i in range(3, int(args[0])):
@@ -16,9 +16,7 @@ for i in range(3, int(args[0])):
   sys.stdout.write("\n".join(errors))
   sys.exit(1)
  for testCase in response:  # there should only be one qualifying TestCase  
-  #print "%s %s %s %s" % (testCase.Name, testCase.Type,  
-  #                       testCase.DefectStatus, testCase.LastVerdict)
-  generatePage(testCase)
-
-def generatePage(testCase):
- 
+  fileName = "C:\dev\TC%s" %i
+  savedTC = open(fileName, 'w')
+  savedTC.write(template.render(tc_name=testCase.Name, steps=testCase.Steps, preconditions=testCase.PreConditions))
+  savedTC.close()
