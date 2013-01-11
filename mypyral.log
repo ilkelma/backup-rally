@@ -1,3 +1,15 @@
-2013-01-11 01:04:19.724 Following entries record Rally REST API interaction via https://rally1.rallydev.com/slm/webservice/1.37 for user: andrew.m.knight@accenture.com
-2013-01-11 01:04:20.230 GET TestCase.js?fetch=true&query=(FormattedID%20%3D%20%223%22)&workspace=workspace/320752440&project=project/320760015&pagesize=20&start=1
-2013-01-11 01:04:20.779 200 TestCase TotalResultCount 1
+2013-01-11 01:15:48.068 Following entries record Rally REST API interaction via https://rally1.rallydev.com/slm/webservice/1.37 for user: andrew.m.knight@accenture.com
+2013-01-11 01:15:48.590 GET TestCase.js?fetch=true&query=(FormattedID%20%3D%20%223%22)&workspace=workspace/320752440&project=project/320760015&pagesize=20&start=1
+2013-01-11 01:15:49.157 200 TestCase TotalResultCount 1
+2013-01-11 01:15:51.624 GET TestCase.js?fetch=true&query=(FormattedID%20%3D%20%224%22)&workspace=workspace/320752440&project=project/320760015&pagesize=20&start=1
+2013-01-11 01:15:52.140 200 TestCase TotalResultCount 1
+2013-01-11 01:15:52.735 GET TestCase.js?fetch=true&query=(FormattedID%20%3D%20%225%22)&workspace=workspace/320752440&project=project/320760015&pagesize=20&start=1
+2013-01-11 01:15:53.221 200 TestCase TotalResultCount 1
+2013-01-11 01:15:54.391 GET TestCase.js?fetch=true&query=(FormattedID%20%3D%20%226%22)&workspace=workspace/320752440&project=project/320760015&pagesize=20&start=1
+2013-01-11 01:15:54.980 200 TestCase TotalResultCount 1
+2013-01-11 01:15:56.765 GET TestCase.js?fetch=true&query=(FormattedID%20%3D%20%227%22)&workspace=workspace/320752440&project=project/320760015&pagesize=20&start=1
+2013-01-11 01:15:57.013 200 TestCase TotalResultCount 1
+2013-01-11 01:15:57.604 GET TestCase.js?fetch=true&query=(FormattedID%20%3D%20%228%22)&workspace=workspace/320752440&project=project/320760015&pagesize=20&start=1
+2013-01-11 01:15:58.036 200 TestCase TotalResultCount 1
+2013-01-11 01:15:58.242 GET TestCase.js?fetch=true&query=(FormattedID%20%3D%20%229%22)&workspace=workspace/320752440&project=project/320760015&pagesize=20&start=1
+2013-01-11 01:15:58.700 200 TestCase TotalResultCount 1

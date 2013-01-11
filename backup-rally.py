@@ -16,7 +16,8 @@ for i in range(3, int(args[0])):
   sys.stdout.write("\n".join(errors))
   sys.exit(1)
  for testCase in response:  # there should only be one qualifying TestCase  
-  print template.render(tc_name=testCase.Name, steps=testCase.Steps, preconditions=testCase.PreConditions)
+  outString = template.render(tc_name=testCase.Name, steps=testCase.Steps, preconditions=testCase.PreConditions)
+  print outString.encode('ascii', 'ignore')
   #fileName = "C:\dev\TC%s" %i
   #savedTC = open(fileName, 'w')
   #savedTC.write(template.render(tc_name=testCase.Name, steps=testCase.Steps, preconditions=testCase.PreConditions))
