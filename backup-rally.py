@@ -17,8 +17,9 @@ for i in range(3, int(args[0])):
   sys.exit(1)
  for testCase in response:  # there should only be one qualifying TestCase  
   outString = template.render(tc_name=testCase.Name, steps=testCase.Steps, preconditions=testCase.PreConditions)
-  print outString.encode('ascii', 'ignore')
-  #fileName = "C:\dev\TC%s" %i
-  #savedTC = open(fileName, 'w')
-  #savedTC.write(template.render(tc_name=testCase.Name, steps=testCase.Steps, preconditions=testCase.PreConditions))
-  #savedTC.close()
+  #print outString.encode('ascii', 'ignore')
+  #print template.render(tc_name=testCase.Name, steps=testCase.Steps, preconditions=testCase.PreConditions)
+  fileName = "output\\\TC%s.html" %i
+  savedTC = open(fileName, 'w')
+  savedTC.write(template.render(tc_name=testCase.Name, steps=testCase.Steps, preconditions=testCase.PreConditions).encode('utf-8', 'ignore'))
+  savedTC.close()
