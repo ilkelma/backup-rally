@@ -19,7 +19,7 @@ for i in range(3, int(args[0])):
   outString = template.render(tc_name=testCase.Name, steps=testCase.Steps, preconditions=testCase.PreConditions)
   #print outString.encode('ascii', 'ignore')
   #print template.render(tc_name=testCase.Name, steps=testCase.Steps, preconditions=testCase.PreConditions)
-  fileName = "output\\\TC%s.html" %i
+  fileName = "TC%s.html" %i
   savedTC = open(fileName, 'w')
   savedTC.write(template.render(tc_name=testCase.Name, steps=testCase.Steps, preconditions=testCase.PreConditions).encode('utf-8', 'ignore'))
   savedTC.close()
