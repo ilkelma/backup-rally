@@ -30,12 +30,12 @@ More information and troubleshooting steps for installing pyral can be found her
 Set-Up
 ------
 1. From the backup rally folder do (make a duplicate in explorer):  
-	cp settings.cfg.template settings.cfg
+    ````cp settings.cfg.template settings.cfg````
 2. Open the new settings.cfg file and fill in all required information (Server, Username and Password)
 
 Usage
 -----
 
 Usage is simple:  
-	python backup-rally.py --conf=settings.cfg number
+     ````python backup-rally.py --conf=settings.cfg number```
 In place of number put the highest number of test case you need to output. (In the future this will be revised to find that number programmatically)
