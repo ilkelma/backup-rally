@@ -37,5 +37,5 @@ Usage
 -----
 
 Usage is simple:  
-     ````python backup-rally.py --conf=settings.cfg number```
+     ````python backup-rally.py --conf=settings.cfg number````
 In place of number put the highest number of test case you need to output. (In the future this will be revised to find that number programmatically)
