@@ -9,17 +9,16 @@ rally.enableLogging('mypyral.log')
 env = Environment(loader = FileSystemLoader('.'))
 template = env.get_template('testCase.html')
 
-for i in range(3, int(args[0])):
- query_criteria = 'FormattedID = "%s"' % i
- response = rally.get('TestCase', fetch=True, query=query_criteria)
- if response.errors:
-  sys.stdout.write("\n".join(errors))
-  sys.exit(1)
- for testCase in response:  # there should only be one qualifying TestCase  
-  outString = template.render(tc_name=testCase.Name, steps=testCase.Steps, preconditions=testCase.PreConditions)
-  #print outString.encode('ascii', 'ignore')
-  #print template.render(tc_name=testCase.Name, steps=testCase.Steps, preconditions=testCase.PreConditions)
-  fileName = "TC%s.html" %i
-  savedTC = open(fileName, 'w')
-  savedTC.write(template.render(tc_name=testCase.Name, steps=testCase.Steps, preconditions=testCase.PreConditions).encode('utf-8', 'ignore'))
-  savedTC.close()
+# First we query once to get all Test Cases
+response = rally.get('TestCase', fetch=True, query='')
+if response.errors:
+ sys.stdout.write("\n".join(errors))
+ sys.exit(1)
+# Now we loop over the test cases
+for testCase in response:
+ outString = template.render(tc_name=testCase.Name, steps=testCase.Steps, preconditions=testCase.PreConditions)
+ fileName = "%s.html" %testCase.FormattedID
+ savedTC = open(fileName, 'w')
+ savedTC.write(template.render(tc_name=testCase.Name, steps=testCase.Steps, preconditions=testCase.PreConditions).encode('utf-8', 'ignore'))
+ savedTC.close()
+ print "%s saved." %fileName
