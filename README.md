@@ -37,5 +37,6 @@ Usage
 -----
 
 Usage is simple:  
-	````python backup-rally.py --conf=settings.cfg number````  
-In place of number put the highest number of test case you need to output. (In the future this will be revised to find that number programmatically)
+	````python backup-rally.py --conf=settings.cfg iteration````  
+In place of "iteration" type a partial or full match to the name of the iteration you want to return all test cases. 
+At the moment all test cases will be printed as TS#-TC#.html next on the TODO list is making it create new folders for each testset.
