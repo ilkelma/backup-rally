@@ -1,5 +1,6 @@
 import sys
 import time
+import re
 from pyral import Rally, rallySettings
 from jinja2 import Environment, FileSystemLoader
 options = [arg for arg in sys.argv[1:] if arg.startswith('--')]
@@ -10,10 +11,21 @@ rally.enableLogging('mypyral.log')
 env = Environment(loader = FileSystemLoader('.'))
 template = env.get_template('testCase.html')
 
+# This function determines if the Test Folder is an archive folder
+def filterString(tfName):
+  if tfName.find('Archive') != -1:
+   return True
+  elif tfName.find('archive') != -1:
+   return True
+  elif re.search(r'(\d+)$', tfName) is not None:
+   return True
+
+  return False
+
 if not args:
- queryCriteria = 'Project.Name contains "{0}"'.format(project)
+ queryCriteria = '(Project.Name contains "{0}")'.format(project)
 else:
- queryCriteria = 'Project.Name contains "{0}"'.format(args[0])
+ queryCriteria = '(Project.Name contains "{0}") and '.format(args[0])
 
 # First we query once to get each Test Set for the given sprint
 response = rally.get('TestFolder', fetch="TestCases,FormattedID,Name", query=queryCriteria)
@@ -22,11 +34,15 @@ if response.errors:
  sys.exit(1)
 # Now we loop over the test sets, and then the test cases
 for testFolder in response:
+ if filterString(testFolder.Name):
+  continue
  thisFolder = testFolder.FormattedID
  testCases = rally.get('TestCase', fetch="FormattedID,PreConditions,Name,Steps,ValidationInput,Type,PostConditions",query="FormattedID = {0}".format(thisFolder))
  for testCase in testCases:
   fileName = "{0}_{1}-{2}_{3}.html".format(thisFolder, testFolder.Name, testCase.FormattedID, testCase.Name)
+  fileName = re.sub('[^\w\-_\. ]', '_', fileName) #replace any disallowed filename characters 
+  fileName = "output/{0}".format(fileName) 
   savedTC = open(fileName[:256], 'w') #truncate filename to 256 characters
-  savedTC.write(template.render(tc_name=testCase.Name, steps=testCase.Steps, preconditions=testCase.PreConditions, validationInput=testCase.ValidationInput).encode('utf-8', 'ignore'))
+  savedTC.write(template.render(steps=testCase.Steps, test_case=testCase).encode('utf-8', 'ignore'))
   savedTC.close()
   print "{0} saved.".format(fileName)

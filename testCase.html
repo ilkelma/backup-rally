@@ -1,12 +1,12 @@
 <html>
 <head>
-	<title>{{ test_case.FormattedID }} - {{ tc_name }}</title>
+	<title>{{ test_case.FormattedID }} - {{ test_case.Name }}</title>
 </head>
 <body>
-	<h1>{{ test_case.FormattedID }} - {{ tc_name }}</h1>
+	<h1>{{ test_case.FormattedID }} - {{ test_case.Name }}</h1>
 	<h3>Type: {{ test_case.Type }}</h3>
 	<table>
-		<tr>{{ preconditions }}</tr>
+		<tr>{{ test_case.PreConditions }}</tr>
 	    {% for testStep in steps %}
 	        <tr><td>{{ testStep.StepIndex+1 }}</td><td>{{ testStep.Input }}</td><td>{{ testStep.ExpectedResult }}</td></tr>
 	    {% endfor %}
